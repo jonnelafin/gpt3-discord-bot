@@ -19,7 +19,7 @@ async def on_ready() :
 @client.group(invoke_without_command=True)
 async def help(ctx):
     em = discord.Embed(title="Help", description="")
-    em.add_field(name="ai functions", value=".ai \"<prompt>\", for example: ```.ai \"Who wrote staying alive?\"```")
+    em.add_field(name="ai functions", value="Answers your question with gpt-3. \nUsage: .ai \"<prompt>\", for example: ```.ai \"Who wrote staying alive?\"```")
     await ctx.send(embed=em)
 @client.command()
 async def ping(ctx) :
