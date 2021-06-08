@@ -35,15 +35,22 @@ async def clear(ctx, amount=3) :
 
 @client.command()
 async def ai(ctx, toprompt="") :
+    if len(tomprompt) > 55:
+        await ctx.send(f"Answer: Keep your question under 55 characters, dumbass")
     if toprompt == "":
         await ctx.send(f"Answer: You forgot to provide me a question, dumbass")
     else:
         question = f"Bot answers user's questions.\nUser: {toprompt}\nBot: "
         print(question)
         response = openai.Completion.create(engine="davinci", prompt=question, max_tokens=max_tokens, stop=[".", "\n"])
-        choises = response["choices"]
+        choises = response["choices"]finish_reason
         print(response)
+        text = choises[0]['text']
+        if choises[0]['finish_reason'] == "stop":
+            text += "."
+        else:
+            text += "..."
         if len(choises) > 0:
-            await ctx.send(f"Answer: {choises[0]['text']}")
+            await ctx.send(f"Answer: {}")
 
 client.run(token)
