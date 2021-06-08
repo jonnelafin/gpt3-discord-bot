@@ -35,7 +35,7 @@ async def clear(ctx, amount=3) :
 
 @client.command()
 async def ai(ctx, toprompt="") :
-    if len(tomprompt) > 55:
+    if len(toprompt) > 55:
         await ctx.send(f"Answer: Keep your question under 55 characters, dumbass")
     if toprompt == "":
         await ctx.send(f"Answer: You forgot to provide me a question, dumbass")
