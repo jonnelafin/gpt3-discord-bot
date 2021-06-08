@@ -51,6 +51,6 @@ async def ai(ctx, toprompt="") :
         else:
             text += "..."
         if len(choises) > 0:
-            await ctx.send(f"Answer: {}")
+            await ctx.send(f"Answer: {text}")
 
 client.run(token)
