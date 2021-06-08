@@ -40,7 +40,7 @@ async def ai(ctx, toprompt="") :
     else:
         question = f"Bot answers user's questions.\nUser: {toprompt}\nBot: "
         print(question)
-        response = openai.Completion.create(engine="davinci", prompt=question, max_tokens=max_tokens, stop=".")
+        response = openai.Completion.create(engine="davinci", prompt=question, max_tokens=max_tokens, stop=[".", "\n"])
         choises = response["choices"]
         print(response)
         if len(choises) > 0:
