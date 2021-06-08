@@ -43,7 +43,7 @@ async def ai(ctx, toprompt="") :
         question = f"Bot answers user's questions.\nUser: {toprompt}\nBot: "
         print(question)
         response = openai.Completion.create(engine="davinci", prompt=question, max_tokens=max_tokens, stop=[".", "\n"])
-        choises = response["choices"]finish_reason
+        choises = response["choices"]
         print(response)
         text = choises[0]['text']
         if choises[0]['finish_reason'] == "stop":
