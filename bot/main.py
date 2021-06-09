@@ -37,7 +37,7 @@ async def clear(ctx, amount=3) :
 async def ai(ctx, toprompt="") :
     if len(toprompt) > 55:
         await ctx.send(f"Answer: Keep your question under 55 characters, dumbass")
-    if toprompt == "":
+    elif toprompt == "":
         await ctx.send(f"Answer: You forgot to provide me a question, dumbass")
     else:
         question = f"Bot answers user's questions.\nUser: {toprompt}\nBot: "
