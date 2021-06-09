@@ -10,6 +10,7 @@ client.remove_command("help")
 token = os.getenv("DISCORD_BOT_TOKEN")
 
 max_tokens = int(os.getenv("MAX_TOKENS",14))
+max_question_len = int(os.getenv("MAX_LEN",55))
 
 @client.event
 async def on_ready() :
@@ -35,7 +36,7 @@ async def clear(ctx, amount=3) :
 
 @client.command()
 async def ai(ctx, toprompt="") :
-    if len(toprompt) > 55:
+    if len(toprompt) > max_question_len:
         await ctx.send(f"Answer: Keep your question under 55 characters, dumbass")
     elif toprompt == "":
         await ctx.send(f"Answer: You forgot to provide me a question, dumbass")
