@@ -12,6 +12,8 @@ token = os.getenv("DISCORD_BOT_TOKEN")
 max_tokens = int(os.getenv("MAX_TOKENS",14))
 max_question_len = int(os.getenv("MAX_LEN",55))
 
+stopc = os.getenv("STOPC", ".;\n"),split(";")
+
 @client.event
 async def on_ready() :
     await client.change_presence(status = discord.Status.idle, activity = discord.Game("Listening to .help"))
@@ -43,7 +45,7 @@ async def ai(ctx, toprompt="") :
     else:
         question = f"Bot answers user's questions.\nUser: {toprompt}\nBot: "
         print(question)
-        response = openai.Completion.create(engine="davinci", prompt=question, max_tokens=max_tokens, stop=[".", "\n"])
+        response = openai.Completion.create(engine="davinci", prompt=question, max_tokens=max_tokens, stop=stopc)
         choises = response["choices"]
         print(response)
         text = choises[0]['text']
