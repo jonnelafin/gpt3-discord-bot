@@ -12,7 +12,7 @@ token = os.getenv("DISCORD_BOT_TOKEN")
 max_tokens = int(os.getenv("MAX_TOKENS",14))
 max_question_len = int(os.getenv("MAX_LEN",55))
 
-stopc = os.getenv("STOPC", ".;\n"),split(";")
+stopc = os.getenv("STOPC", ".;\n").split(";")
 
 @client.event
 async def on_ready() :
